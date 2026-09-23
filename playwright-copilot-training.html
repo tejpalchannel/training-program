@@ -1,0 +1,846 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Playwright + TypeScript with Copilot AI — 30-Day Career Transformation</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary-dark: #0d1117;
+            --primary-light: #ffffff;
+            --accent-blue: #0ea5e9;
+            --accent-purple: #7c3aed;
+            --accent-orange: #f97316;
+            --text-primary: #1e293b;
+            --text-secondary: #64748b;
+            --bg-light: #f8fafc;
+            --bg-subtle: #f1f5f9;
+            --border-color: #e2e8f0;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif;
+            line-height: 1.6;
+            color: var(--text-primary);
+            background: var(--primary-light);
+            overflow-x: hidden;
+        }
+
+        /* Hero Section */
+        .hero {
+            position: relative;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, #0f172a 0%, #1e293b 50%, #0d1117 100%);
+            color: white;
+            overflow: hidden;
+            padding: 2rem;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: 
+                radial-gradient(circle at 20% 80%, rgba(124, 58, 237, 0.15) 0%, transparent 50%),
+                radial-gradient(circle at 80% 20%, rgba(14, 165, 233, 0.15) 0%, transparent 50%);
+            pointer-events: none;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            max-width: 900px;
+            text-align: center;
+        }
+
+        .ai-badge {
+            display: inline-block;
+            padding: 0.5rem 1rem;
+            background: rgba(124, 58, 237, 0.2);
+            border: 1px solid var(--accent-purple);
+            border-radius: 20px;
+            color: #a78bfa;
+            font-size: 0.85rem;
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .hero h1 {
+            font-size: clamp(2.5rem, 8vw, 4rem);
+            font-weight: 700;
+            line-height: 1.2;
+            margin-bottom: 1rem;
+            letter-spacing: -0.02em;
+        }
+
+        .hero h1 span {
+            background: linear-gradient(135deg, var(--accent-blue) 0%, var(--accent-purple) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero-subtitle {
+            font-size: 1.25rem;
+            color: #cbd5e1;
+            margin-bottom: 2rem;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+            line-height: 1.8;
+        }
+
+        .hero-cta {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-bottom: 3rem;
+        }
+
+        .btn {
+            padding: 1rem 2rem;
+            border-radius: 8px;
+            font-size: 1rem;
+            font-weight: 600;
+            text-decoration: none;
+            display: inline-block;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            border: none;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, var(--accent-blue) 0%, var(--accent-purple) 100%);
+            color: white;
+            box-shadow: 0 10px 30px rgba(124, 58, 237, 0.3);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 15px 40px rgba(124, 58, 237, 0.4);
+        }
+
+        .btn-secondary {
+            background: rgba(255, 255, 255, 0.1);
+            color: white;
+            border: 2px solid rgba(255, 255, 255, 0.3);
+        }
+
+        .btn-secondary:hover {
+            background: rgba(255, 255, 255, 0.15);
+            border-color: rgba(255, 255, 255, 0.5);
+        }
+
+        .hero-features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            margin-top: 4rem;
+            max-width: 900px;
+        }
+
+        .feature-item {
+            text-align: left;
+        }
+
+        .feature-icon {
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .feature-item h3 {
+            font-size: 0.95rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            color: var(--accent-blue);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .feature-item p {
+            font-size: 0.9rem;
+            color: #cbd5e1;
+            line-height: 1.6;
+        }
+
+        /* Program Section */
+        .program-section {
+            padding: 5rem 2rem;
+            background: var(--primary-light);
+            position: relative;
+        }
+
+        .section-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .section-eyebrow {
+            color: var(--accent-purple);
+            font-weight: 600;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 1rem;
+        }
+
+        .section-header h2 {
+            font-size: clamp(2rem, 5vw, 2.8rem);
+            font-weight: 700;
+            margin-bottom: 1rem;
+            line-height: 1.2;
+        }
+
+        .section-header p {
+            font-size: 1.1rem;
+            color: var(--text-secondary);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* Learning Path */
+        .learning-path {
+            background: linear-gradient(135deg, var(--bg-light) 0%, var(--bg-subtle) 100%);
+            padding: 3rem;
+            border-radius: 12px;
+            margin-bottom: 3rem;
+            border: 1px solid var(--border-color);
+        }
+
+        .path-items {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 1rem;
+            position: relative;
+        }
+
+        .path-item {
+            flex: 1;
+            min-width: 150px;
+            text-align: center;
+            position: relative;
+        }
+
+        .path-item-number {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--accent-blue) 0%, var(--accent-purple) 100%);
+            color: white;
+            font-weight: 700;
+            font-size: 1.3rem;
+            margin: 0 auto 0.8rem;
+        }
+
+        .path-item h3 {
+            font-size: 0.95rem;
+            font-weight: 600;
+            color: var(--text-primary);
+            margin-bottom: 0.4rem;
+        }
+
+        .path-item p {
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+        }
+
+        /* Phase Cards */
+        .phases-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .phase-card {
+            background: white;
+            border: 2px solid var(--border-color);
+            border-radius: 12px;
+            padding: 2rem;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .phase-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, var(--accent-blue), var(--accent-purple));
+        }
+
+        .phase-card:hover {
+            border-color: var(--accent-purple);
+            box-shadow: 0 10px 30px rgba(124, 58, 237, 0.1);
+            transform: translateY(-4px);
+        }
+
+        .phase-tag {
+            display: inline-block;
+            padding: 0.4rem 0.8rem;
+            background: var(--bg-subtle);
+            border-radius: 4px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            color: var(--accent-purple);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 1rem;
+        }
+
+        .phase-card h3 {
+            font-size: 1.4rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            color: var(--text-primary);
+        }
+
+        .phase-card p {
+            color: var(--text-secondary);
+            margin-bottom: 1.5rem;
+            line-height: 1.7;
+        }
+
+        .phase-highlights {
+            list-style: none;
+            margin-bottom: 1.5rem;
+        }
+
+        .phase-highlights li {
+            padding-left: 1.5rem;
+            margin-bottom: 0.7rem;
+            position: relative;
+            font-size: 0.95rem;
+            color: var(--text-secondary);
+        }
+
+        .phase-highlights li::before {
+            content: '→';
+            position: absolute;
+            left: 0;
+            color: var(--accent-blue);
+            font-weight: 700;
+        }
+
+        .phase-price {
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: var(--accent-purple);
+            margin-top: 1rem;
+        }
+
+        /* AI Features Section */
+        .ai-features {
+            background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+            color: white;
+            padding: 5rem 2rem;
+        }
+
+        .ai-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .ai-feature {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(124, 58, 237, 0.3);
+            padding: 2rem;
+            border-radius: 8px;
+            backdrop-filter: blur(10px);
+        }
+
+        .ai-feature h4 {
+            font-size: 1.1rem;
+            margin-bottom: 0.8rem;
+            color: var(--accent-blue);
+            font-weight: 600;
+        }
+
+        .ai-feature p {
+            font-size: 0.95rem;
+            line-height: 1.6;
+            color: #cbd5e1;
+        }
+
+        /* Timeline Section */
+        .timeline {
+            max-width: 900px;
+            margin: 3rem auto 0;
+        }
+
+        .timeline-item {
+            display: grid;
+            grid-template-columns: 150px 1fr;
+            gap: 2rem;
+            margin-bottom: 2rem;
+            padding-bottom: 2rem;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .timeline-item:last-child {
+            border-bottom: none;
+        }
+
+        .timeline-date {
+            font-weight: 600;
+            color: var(--accent-purple);
+            font-size: 0.95rem;
+        }
+
+        .timeline-content h4 {
+            font-size: 1.1rem;
+            margin-bottom: 0.5rem;
+            color: var(--text-primary);
+        }
+
+        .timeline-content p {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+        }
+
+        /* CTA Section */
+        .cta-section {
+            background: linear-gradient(135deg, var(--accent-purple) 0%, var(--accent-blue) 100%);
+            color: white;
+            padding: 4rem 2rem;
+            text-align: center;
+            border-radius: 16px;
+            margin-top: 4rem;
+        }
+
+        .cta-section h2 {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+            font-weight: 700;
+        }
+
+        .cta-section p {
+            font-size: 1.1rem;
+            margin-bottom: 2rem;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+            line-height: 1.6;
+        }
+
+        .cta-section .btn {
+            background: white;
+            color: var(--accent-purple);
+            font-weight: 700;
+            padding: 1rem 2.5rem;
+        }
+
+        .cta-section .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero {
+                min-height: auto;
+                padding: 3rem 1rem;
+                padding-top: 5rem;
+            }
+
+            .path-items {
+                flex-direction: column;
+            }
+
+            .phases-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .timeline-item {
+                grid-template-columns: 1fr;
+                gap: 0.5rem;
+            }
+
+            .timeline-date {
+                font-size: 0.85rem;
+            }
+        }
+
+        .highlight-ai {
+            background: linear-gradient(120deg, rgba(14, 165, 233, 0.2), rgba(124, 58, 237, 0.2));
+            padding: 1.5rem;
+            border-left: 4px solid var(--accent-blue);
+            border-radius: 4px;
+            margin: 2rem 0;
+        }
+
+        .copilot-integration {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            padding: 1rem;
+            background: var(--bg-subtle);
+            border-radius: 8px;
+            margin-top: 1rem;
+        }
+
+        .copilot-icon {
+            font-size: 1.8rem;
+        }
+
+        .copilot-integration p {
+            font-size: 0.9rem;
+            margin: 0;
+        }
+    </style>
+</head>
+<body>
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <div class="ai-badge">✨ Build An AI-Powered and Production-Ready Framework</div>
+            <h1>Playwright + TypeScript<br><span>with GitHub Copilot</span></h1>
+            <p class="hero-subtitle">
+                Stop watching isolated tutorials. Build a production-ready automation framework in 30 days with AI-assisted code generation, real-time feedback, and a structured path from zero to Automation Hero.
+            </p>
+
+            <div class="hero-cta">
+                <button class="btn btn-primary" onclick="window.location.href='https://yoursite.com/enroll'">Enroll Now — Oct 12 Cohort</button>
+            </div>
+            <div class="hero-features">
+                <div class="feature-item">
+                    <div class="feature-icon">🚀</div>
+                    <h3>30 Days</h3>
+                    <p>Structured learning path from fundamentals to production-ready framework</p>
+                </div>
+                <div class="feature-item">
+                    <div class="feature-icon">🤖</div>
+                    <h3>Copilot Integrated</h3>
+                    <p>AI-assisted code writing, debugging, and test design throughout</p>
+                </div>
+                <div class="feature-item">
+                    <div class="feature-icon">⚡</div>
+                    <h3>90 Min/Day</h3>
+                    <p>Live cohort sessions with hands-on practice and real-time Q&A</p>
+                </div>
+                <div class="feature-item">
+                    <div class="feature-icon">📚</div>
+                    <h3>Career Ready</h3>
+                    <p>Build a GitHub repo portfolio piece employers actually want to see</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Program Overview -->
+    <section class="program-section">
+        <div class="section-container">
+            <div class="section-header">
+                <div class="section-eyebrow">Program Structure</div>
+                <h2>The 30-Day Learning Path</h2>
+                <h3>Foundation → Framework → Integration → Capstone → Frontier</h3>
+            </div>
+
+            <div class="learning-path">
+                <div class="path-items">
+                    <div class="path-item">
+                        <div class="path-item-number">1</div>
+                        <h3>Foundation</h3>
+                        <p>Oct 12 (Mon) - Oct 16 (Fri)</p>
+                        <h4>Playwright Basics</h4>
+                        <h5>"I can automate a browser."</h5>
+                    </div>
+                    <div class="path-item">
+                        <div class="path-item-number">2</div>
+                        <h3>Framework</h3>
+                        <p>Oct 19 (Mon) - Nov 2 (Mon)</p>
+                        <h4>Build a Playwright Framework with GitHub Copilot</h4>
+                        <h5>"I can build production-style automation framework."</h5>
+                    </div>
+                    <div class="path-item">
+                        <div class="path-item-number">3</div>
+                        <h3>Integration</h3>
+                        <p>Nov 3 (Tue) - Nov 6 (Fri)</p>
+                        <h4>CI/CD Integration</h4>
+                        <h5>"Framework running automatically in GitHub."</h5>
+                    </div>
+                    <div class="path-item">
+                        <div class="path-item-number">4</div>
+                        <h3>Capstone</h3>
+                        <p>Nov 16 (Mon) - Nov 20 (Fri)</p>
+                        <h4>Real-World Project</h4>
+                        <h5>"I have One finished, end-to-end project."</h5>
+                    </div>
+                    <div class="path-item">
+                        <div class="path-item-number">5</div>
+                        <h3>Capstone</h3>
+                        <p>Nov 23 (Mon) - Nov 27 (Fri)</p>
+                        <h4>AI and MCP tooling with Playwright</h4>
+                        <h5>"Use AI and MCP to generate, run, and self-heal tests."</h5>
+                    </div>
+                </div>
+            </div>
+
+            <div class="highlight-ai">
+                <strong>🎯 Throughout all 5 phases:</strong> GitHub Copilot integration helps you write, debug, and optimize tests faster. Learn to prompt effectively, understand AI suggestions, and maintain quality.
+            </div>
+            <div class="highlight-ai">
+                <strong>📌 One-Week gap in the training schedule for Diwali Vacation. Sessions will suspend from 7 Nov 2026 till 15 Nov 2026.</strong> 
+            </div>
+            <!-- Phase Cards -->
+            <h3 style="font-size: 1.8rem; margin: 3rem 0 2rem 0; font-weight: 700;">Detailed Phase Breakdown</h3>
+
+            <div class="phases-grid">
+                <!-- Phase 1 -->
+                <div class="phase-card">
+                    <div class="phase-tag">Phase 1 • Paid</div>
+                    <h3>Foundation</h3>
+                    <p><strong>5 Days</strong> • Self-paced introduction to writing and running real Playwright tests.</p>
+
+                    <ul class="phase-highlights">
+                        <li>Getting Started with Playwright & Environment Setup</li>
+                        <li>Understanding the DOM & basic locators</li>
+                        <li>Automating User Interactions — click, type, keyboard/mouse, forms</li>
+                        <li>Assertions & Waits</li>
+                        <li>AI-Driven Test Design & Recap</li>
+                    </ul>
+
+                    <div class="copilot-integration">
+                        <div class="copilot-icon">🤖</div>
+                        <p><strong>Copilot helps:</strong> Generate test scripts from plain English descriptions</p>
+                    </div>
+
+                    <p style="margin-top: 1rem; font-size: 0.9rem; color: var(--text-secondary);">
+                        <strong>Outcome:</strong> 3+ working test scripts, your first GitHub repo
+                    </p>
+                    <div class="phase-price">₹3,999 / $69</div>
+                </div>
+
+                <!-- Phase 2 -->
+                <div class="phase-card">
+                    <div class="phase-tag">Phase 2 • Paid</div>
+                    <h3>Build Framework</h3>
+                    <p><strong>11 Days</strong> • Turn individual scripts into production-style automation architecture.</p>
+
+                    <ul class="phase-highlights">
+                        <li>Git & GitHub collaboration</li>
+                        <li>TypeScript for testers</li>
+                        <li>Playwright config & fixtures</li>
+                        <li>Page Object Model</li>
+                        <li>Data-driven testing</li>
+                        <li>API testing with BDD</li>
+                    </ul>
+
+                    <div class="copilot-integration">
+                        <div class="copilot-icon">🤖</div>
+                        <p><strong>Copilot helps:</strong> Generate Page Object classes, test scenarios, fixtures</p>
+                    </div>
+
+                    <p style="margin-top: 1rem; font-size: 0.9rem; color: var(--text-secondary);">
+                        <strong>Outcome:</strong> Full framework with 5+ UI tests, 3+ API tests
+                    </p>
+                    <div class="phase-price">₹9,999 / $179</div>
+                </div>
+
+                <!-- Phase 3 -->
+                <div class="phase-card">
+                    <div class="phase-tag">Phase 3 • Paid</div>
+                    <h3>Integration</h3>
+                    <p><strong>5 Days</strong> • Make tests run automatically in CI/CD pipelines.</p>
+
+                    <ul class="phase-highlights">
+                        <li>Push Code to GitHub & Collaboration Workflow (Branches, PRs)</li>
+                        <li>GitHub Actions - build a CI/CD pipeline that runs your suite on every push</li>
+                        <li>Run Your Automation in GitHub Actions & Switching Between Environments</li>
+                        <li>Reading Reports & Troubleshooting CI Failures & Integration Review</li>
+                    </ul>
+
+                    <div class="copilot-integration">
+                        <div class="copilot-icon">🤖</div>
+                        <p><strong>Copilot helps:</strong> Write GitHub Actions workflows, Docker configs</p>
+                    </div>
+
+                    <p style="margin-top: 1rem; font-size: 0.9rem; color: var(--text-secondary);">
+                        <strong>Outcome:</strong> Fully automated test pipeline running on every commit
+                    </p>
+                    <div class="phase-price">₹1,999 / $39</div>
+                </div>
+
+                <!-- Phase 4 -->
+                <div class="phase-card">
+                    <div class="phase-tag">Phase 4 • Paid</div>
+                    <h3>Capstone</h3>
+                    <p><strong>5 Days</strong> • Build a real-world automation suite for a production app.</p>
+
+                    <ul class="phase-highlights">
+                        <li>Capstone Kickoff — pick a real target site, plan your project</li>
+                        <li>Build your production framework — UI + API + POM + CI, fully integrated, with live support</li>
+                        <li>Reporting Polish + Final Review</li>
+                        <li>Demo day — Present Your Project Live, get Feedback, Receive Your Certificate</li>
+                    </ul>
+
+                    <div class="copilot-integration">
+                        <div class="copilot-icon">🤖</div>
+                        <p><strong>Copilot helps:</strong> Rapid prototyping, edge case generation, refactoring</p>
+                    </div>
+
+                    <p style="margin-top: 1rem; font-size: 0.9rem; color: var(--text-secondary);">
+                        <strong>Outcome:</strong> Production-ready test suite on GitHub for interviews
+                    </p>
+                    <div class="phase-price">₹2,999 / $49</div>
+                </div>
+
+                <!-- Phase 5 -->
+                <div class="phase-card">
+                    <div class="phase-tag">Phase 5 • Bonus</div>
+                    <h3>Frontier</h3>
+                    <p><strong>5 Days</strong> • Advanced topics and career preparation.</p>
+
+                    <ul class="phase-highlights">
+                        <li>Back to AI-Assisted Testing — Now With Your Real Framework</li>
+                        <li>What MCP Actually Is — Live Demo, No Setup Yet</li>
+                        <li>Setting Up MCP, Guided Step-by-Step</li>
+                        <li>Self-Healing Tests & ARIA Snapshots</li>
+                        <li>Applying AI/MCP to Your Capstone + Recap</li>
+                    </ul>
+
+                    <div class="copilot-integration">
+                        <div class="copilot-icon">🤖</div>
+                        <p><strong>Copilot helps:</strong> Generate edge cases, optimize test performance</p>
+                    </div>
+
+                    <p style="margin-top: 1rem; font-size: 0.9rem; color: var(--text-secondary);">
+                        <strong>Outcome:</strong> Interview-ready portfolio & community connection
+                    </p>
+                    <div class="phase-price">₹3,999 / $69</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- AI Features Section -->
+    <section class="ai-features">
+        <div class="section-container">
+            <div class="section-header" style="color: white; margin-bottom: 3rem;">
+                <div class="section-eyebrow" style="color: var(--accent-blue);">AI-Powered Learning</div>
+                <h2 style="color: white;">How GitHub Copilot Transforms Your Learning</h2>
+            </div>
+
+            <div class="ai-grid">
+                <div class="ai-feature">
+                    <h4>⚡ Real-Time Code Assistance</h4>
+                    <p>Copilot suggests completions as you type. Learn by seeing patterns, then refining suggestions into production code.</p>
+                </div>
+                <div class="ai-feature">
+                    <h4>🧠 Natural Language to Code</h4>
+                    <p>Describe what you need: "Create a login test with email validation." Copilot generates the code. You understand why.</p>
+                </div>
+                <div class="ai-feature">
+                    <h4>🐛 Smart Debugging</h4>
+                    <p>Copilot explains test failures, suggests fixes, and helps you understand what went wrong without Stack Overflow hunting.</p>
+                </div>
+                <div class="ai-feature">
+                    <h4>📈 Rapid Prototyping</h4>
+                    <p>Prototype tests 3x faster. Spend less time boilerplating, more time understanding automation design patterns.</p>
+                </div>
+                <div class="ai-feature">
+                    <h4>🔍 Code Review Partner</h4>
+                    <p>Copilot reviews your code in-editor, catches issues, and teaches best practices before submitting to mentors.</p>
+                </div>
+                <div class="ai-feature">
+                    <h4>🎯 Prompt Engineering Skills</h4>
+                    <p>Learn to prompt Copilot effectively — a skill that makes you better at communicating with any AI tool or teammate.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+     
+
+    <!-- Who This Is For -->
+    <section class="program-section">
+        <div class="section-container">
+            <div class="section-header">
+                <h2>Who This Is For</h2>
+            </div>
+
+            <div class="phases-grid">
+                <div class="phase-card">
+                    <h3>Career Switchers</h3>
+                    <p>Want to break into QA/SDET roles but don't have a framework portfolio. This gives you one in 30 days, with a structured story to tell in interviews.</p>
+                </div>
+                <div class="phase-card">
+                    <h3>Manual QA Engineers</h3>
+                    <p>Ready to level up from isolated test scripts to real automation frameworks. Learn architecture, API testing, and CI/CD in a live environment.</p>
+                </div>
+                <div class="phase-card">
+                    <h3>Junior Developers</h3>
+                    <p>Want to add test automation to your skillset. Playwright + TypeScript opens SDET and QA automation doors in tech companies.</p>
+                </div>
+                <div class="phase-card">
+                    <h3>Developers Learning to Test</h3>
+                    <p>Understand why testing matters. Build production-quality test suites that pair with your development work in real teams.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="program-section">
+        <div class="section-container">
+            <div class="cta-section">
+                <h2>Start Your 30-Day Transformation</h2>
+                <p>
+                    The Oct 12 cohort fills fast. Limited to 25 participants for hands-on mentoring and live code reviews.
+                    Join engineers building production-ready test automation with AI assistance.
+                </p>
+                <button class="btn" onclick="window.location.href='https://yoursite.com/enroll'">Enroll Now — Phase 1</button>
+                <div>
+                    <strong>
+                        📌 Single Registration, Flexible Payment
+                        <br>
+                        Register once and stay enrolled throughout the program. Pay for each phase as you progress.
+                    </strong>
+                </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <section style="background: #0f172a; color: white; padding: 3rem 2rem; text-align: center;">
+        <div class="section-container">
+            <p style="margin-bottom: 1rem;">
+                <strong>Includes:</strong> Live mentoring · Code reviews · GitHub repo setup · Copilot integration guide · Interview prep · Lifetime access to recordings
+            </p>
+            <p style="font-size: 0.9rem; color: #94a3b8;">
+                Questions? Email: tejpalchannel@gmail.com
+            </p>
+        </div>
+    </section>
+</body>
+</html>
