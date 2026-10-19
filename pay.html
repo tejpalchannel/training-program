@@ -93,21 +93,32 @@
 
     <div class="confirmation-card">
         <div class="icon-wrapper">✓</div>
-        
+
         <span class="cohort-badge">Cohort Kickoff: 14 November 2026</span>
-        
+
         <h1>Registration Complete!</h1>
-        
+
         <p>
             Your details have been successfully received and locked in.<br>
             Please complete your Phase 1 enrollment payment below to secure your seat.
         </p>
-        
+
         <!-- REPLACE THE HREF VALUE WITH YOUR ACTUAL CHECKOUT LINK -->
-        <a href="YOUR_ACTUAL_PAYMENT_GATEWAY_LINK_HERE" class="btn-payment">
-            Proceed to Pay ₹3,999 / $69
-        </a>
-        
+        <!-- Dual Payment Buttons Container -->
+        <div style="display: flex; flex-direction: column; gap: 15px; margin-top: 25px;">
+
+            <!-- BUTTON 1: INDIAN USERS (RAZORPAY) -->
+            <a href="https://rzp.io/rzp/X4okVEX9" class="btn-payment" style="background-color: #0073EC; box-shadow: 0 4px 14px rgba(0, 115, 236, 0.3);">
+                🇮🇳 Indian Residents (Pay ₹3,999 via Razorpay)
+            </a>
+
+            <!-- BUTTON 2: INTERNATIONAL USERS (STRIPE/PAYPAL) -->
+            <a href="https://www.paypal.com/ncp/payment/XLVL2LUB2MUHS" class="btn-payment" style="background-color: #22c55e; box-shadow: 0 4px 14px rgba(34, 197, 94, 0.3);">
+                🌐 International Users (Pay $69  via PayPal)
+            </a>
+
+        </div>
+
         <p class="support-text">
             Having trouble paying? Contact support at tejpalchannel@gmail.com
         </p>
