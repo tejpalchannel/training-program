@@ -24,6 +24,7 @@
         section {
             padding: 3rem 1rem;
         }
+
         :root {
             --primary-dark: #0d1117;
             --primary-light: #ffffff;
@@ -374,6 +375,7 @@
             color: white;
             padding: 5rem 2rem;
         }
+
         .ai-features {
             background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
             color: white;
@@ -534,26 +536,26 @@
             font-size: 0.9rem;
             margin: 0;
         }
+
         .brevo-responsive-wrapper {
             width: 100%;
             max-width: 680px;
             margin: 0 auto;
         }
 
-        .brevo-registration-iframe {
-            display: block;
-            width: 100%;
-            height: 1350px;
-            border: none;
-        }
+            /* Desktop */
+            .brevo-responsive-wrapper iframe {
+                height: 1350px;
+            }
 
         /* Mobile */
         @media screen and (max-width: 768px) {
-            .brevo-registration-iframe {
-                height: 1800px;
+            .brevo-responsive-wrapper iframe {
+                height: 1800px !important;
+                min-height: 1800px;
             }
         }
-
+        
     </style>
 </head>
 <body>
@@ -862,9 +864,9 @@
                 </button>
                 <small style="color: #ffffff !important; opacity: 0.85; font-size: 11px; display: block; margin-top: 6px; line-height: 1.4; ">
                     *For International Users, Topmate dynamically auto-adjusts checkout currency based on your location.
-                </small> 
+                </small>
             </div>
-            </div>
+        </div>
     </section>
     <!-- Phase Cards -->
     <h3 style="font-size: 1.8rem; margin: 3rem 0 2rem 0; font-weight: 700;"></h3>
@@ -955,7 +957,7 @@
                     <iframe src="https://621b3f23.sibforms.com/v2/serve/MUIFAKrc41o8I3Zf0MQE8j3U1fUROMUHHvUzyIg3BoYDs1I0m-5bymnhd-wK3dyj_FOd_6N8KU5Fm-UcM08FlAgmX8GYx18cQPRNTRZ_kFEOEUdJFQedE7lZXYMrXsVGS6YtBIVzYyDy-TXemXZbPIZEa7wMk6KVVIFuqQ0jOo4PKLOUmXE1UqZ8CwW9ruOe0899hZSB4pNrEDa3jA=="
                             frameborder="0"
                             scrolling="no"
-                            style="display: block; width: 100%; height: 1800px; border: none;">
+                            style="display: block; width: 100%; height: 1350px; border: none;">
                     </iframe>
                 </div>
                 <div>
@@ -966,7 +968,7 @@
                     </strong>
                 </div>
             </div>
-            </div>
+        </div>
     </section>
 
     <!-- Footer -->
