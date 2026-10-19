@@ -10,7 +10,20 @@
             padding: 0;
             box-sizing: border-box;
         }
+        /* Fluid component spacing using responsive rem variables */
+        h1, h2, h3 {
+            margin-bottom: 0.75rem;
+            line-height: 1.2;
+        }
 
+        p, ul {
+            margin-bottom: 1rem;
+            line-height: 1;
+        }
+
+        section {
+            padding: 3rem 1rem;
+        }
         :root {
             --primary-dark: #0d1117;
             --primary-light: #ffffff;
@@ -178,7 +191,7 @@
 
         /* Program Section */
         .program-section {
-            padding: 5rem 2rem;
+            padding: 1rem 1rem;
             background: var(--primary-light);
             position: relative;
         }
@@ -190,7 +203,7 @@
 
         .section-header {
             text-align: center;
-            margin-bottom: 3rem;
+            margin-bottom: 1rem;
         }
 
         .section-eyebrow {
@@ -356,6 +369,11 @@
         }
 
         /* AI Features Section */
+        .ai-featuresNew {
+            background: linear-gradient(135deg, #075985 0%, #0369a1 50%, #0f172a 100%);
+            color: white;
+            padding: 5rem 2rem;
+        }
         .ai-features {
             background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
             color: white;
@@ -530,34 +548,36 @@
             </p>
             <div class="section-eyebrow" style="color: var(--accent-orange);">
                 <h2>Sessions on Saturdays and Sundays only, Starting Saturday 14 November 2026.</h2>
+            </div>
+            <div class="hero-cta">
+                <button class="btn btn-primary" onclick="document.getElementById('registration-section').scrollIntoView({ behavior: 'smooth' })">
+                    Register Now — Phase 1
+                </button>
+            </div>
+            <div class="hero-features">
+                <div class="feature-item">
+                    <div class="feature-icon">🚀</div>
+                    <h3>30 Days</h3>
+                    <p>Structured learning path from fundamentals to production-ready framework</p>
                 </div>
-                <div class="hero-cta">
-                    <button class="btn btn-primary" onclick="window.location.href='https://621b3f23.sibforms.com/v2/serve/MUIFAAYJRVYtdF43utRh_DRrjSy5hf8AuFLXmBCCwH1y-FXVqmRoUGsxZxumVKa7PUNP1S21w6Ln50K9Jtkd137hpTAjIVqfnx6xnBnIAt8UwtvXWxJQORbwtA2LydDE5I7WgrwjqiRf7McoA7V1zcOKZ0lswkiASy7esuywaNOsidpa236g1h2qmEl1LOa6pw2dNmdtqc3BCLC0ow=='">Register Now — Phase 1</button>
+                <div class="feature-item">
+                    <div class="feature-icon">🤖</div>
+                    <h3>Copilot Integrated</h3>
+                    <p>AI-assisted code writing, debugging, and test design throughout</p>
                 </div>
-                <div class="hero-features">
-                    <div class="feature-item">
-                        <div class="feature-icon">🚀</div>
-                        <h3>30 Days</h3>
-                        <p>Structured learning path from fundamentals to production-ready framework</p>
-                    </div>
-                    <div class="feature-item">
-                        <div class="feature-icon">🤖</div>
-                        <h3>Copilot Integrated</h3>
-                        <p>AI-assisted code writing, debugging, and test design throughout</p>
-                    </div>
-                    <div class="feature-item">
-                        <div class="feature-icon">⚡</div>
-                        <h3>90 Min/Day</h3>
-                        <p>Live cohort sessions with hands-on practice and real-time Q&A</p>
-                    </div>
-                    <div class="feature-item">
-                        <div class="feature-icon">📚</div>
-                        <h3>Career Ready</h3>
-                        <p>Build a GitHub repo portfolio piece employers actually want to see</p>
-                    </div>
+                <div class="feature-item">
+                    <div class="feature-icon">⚡</div>
+                    <h3>90 Min/Day</h3>
+                    <p>Live cohort sessions with hands-on practice and real-time Q&A</p>
+                </div>
+                <div class="feature-item">
+                    <div class="feature-icon">📚</div>
+                    <h3>Career Ready</h3>
+                    <p>Build a GitHub repo portfolio piece employers actually want to see</p>
                 </div>
             </div>
-</section>
+        </div>
+    </section>
 
     <!-- Program Overview -->
     <section class="program-section">
@@ -614,9 +634,6 @@
             <div class="highlight-ai">
                 <strong>🎯 Throughout all 5 phases:</strong> GitHub Copilot integration helps you write, debug, and optimize tests faster. Learn to prompt effectively, understand AI suggestions, and maintain quality.
             </div>
-            <div class="highlight-ai">
-                <strong>📌 One-Week gap in the training schedule for Diwali Vacation. Sessions will suspend from 7 Nov 2026 till 15 Nov 2026.</strong>
-            </div>
             <!-- Phase Cards -->
             <h3 style="font-size: 1.8rem; margin: 3rem 0 2rem 0; font-weight: 700;">Detailed Phase Breakdown</h3>
 
@@ -646,7 +663,9 @@
                     <div class="phase-price">
                         ₹3,999 / $69
                         <div class="hero-cta">
-                            <button class="btn btn-primary" onclick="window.location.href='https://621b3f23.sibforms.com/v2/serve/MUIFAAYJRVYtdF43utRh_DRrjSy5hf8AuFLXmBCCwH1y-FXVqmRoUGsxZxumVKa7PUNP1S21w6Ln50K9Jtkd137hpTAjIVqfnx6xnBnIAt8UwtvXWxJQORbwtA2LydDE5I7WgrwjqiRf7McoA7V1zcOKZ0lswkiASy7esuywaNOsidpa236g1h2qmEl1LOa6pw2dNmdtqc3BCLC0ow=='">Register Now — Phase 1</button>
+                            <button class="btn btn-primary" onclick="document.getElementById('registration-section').scrollIntoView({ behavior: 'smooth' })">
+                                Register Now — Phase 1
+                            </button>
                         </div>
                     </div>
 
@@ -754,6 +773,81 @@
         </div>
     </section>
 
+    <section class="ai-featuresNew">
+        <div class="section-container">
+            <div class="section-header" style="color: white; margin-bottom: 3rem;">
+
+                <h3 style="font-size: 1.8rem; margin: 0rem 0 2rem 0; font-weight: 500;" ;">Get Instant Access — Self-Paced for Your Quick Learning</h3>
+                <div class="phases-grid">
+                    <!-- Phase 1 -->
+                    <div class="phase-card" ; style="text-align:left">
+                        <h3>Phase 1 - Foundation (Self-Paced)</h3>
+                        <p>Self-paced introduction to writing and running real Playwright tests.</p>
+
+                        <ul class="phase-highlights">
+                            <li>Getting Started with Playwright & Environment Setup</li>
+                            <li>Understanding the DOM & basic locators</li>
+                            <li>Automating User Interactions — click, type, keyboard/mouse, forms</li>
+                            <li>Assertions & Waits</li>
+                            <li>AI-Driven Test Design & Recap</li>
+                        </ul>
+
+                        <div class="copilot-integration">
+                            <div class="copilot-icon">🤖</div>
+                            <p><strong>Copilot helps:</strong> Generate test scripts from plain English descriptions</p>
+                        </div>
+
+                        <p style="margin-top: 1rem; font-size: 0.9rem; color: var(--text-secondary);">
+                            <strong>Outcome:</strong> 3+ working test scripts, your first GitHub repo
+                        </p>
+                        <div class="hero-cta">
+                            <button class="btn btn-success" onclick="window.open('https://topmate.io/automationtechguru/2287968', '_blank')" style="width: 100%; background-color: #22c55e !important; color: #ffffff !important; border: none; padding: 14px 20px; border-radius: 6px; font-size: 16px; font-weight: 700; cursor: pointer; display: block;">
+                                ⚡ Buy Self-Paced Phases 1 — ₹2,999 *
+                            </button>
+                        </div>
+
+                    </div>
+                    <!-- Phase 2 -->
+                    <div class="phase-card" ; style="text-align:left">
+                        <h3>Build Framework (Self-Paced)</h3>
+                        <p>Turn individual scripts into production-style automation architecture.</p>
+
+                        <ul class="phase-highlights">
+                            <li>Git & GitHub collaboration</li>
+                            <li>TypeScript for testers</li>
+                            <li>Playwright config & fixtures</li>
+                            <li>Page Object Model</li>
+                            <li>Data-driven testing & API testing with BDD</li>
+                        </ul>
+
+                        <div class="copilot-integration">
+                            <div class="copilot-icon">🤖</div>
+                            <p><strong>Copilot helps:</strong> Generate Page Object classes, test scenarios, fixtures</p>
+                        </div>
+
+                        <p style="margin-top: 1rem; font-size: 0.9rem; color: var(--text-secondary);">
+                            <strong>Outcome:</strong> Full framework with 5+ UI tests, 3+ API tests
+                        </p>
+                        <div class="hero-cta">
+                            <button class="btn btn-success" onclick="window.open('https://topmate.io/automationtechguru/2286906', '_blank')" style="width: 100%; background-color: #22c55e !important; color: #ffffff !important; border: none; padding: 14px 20px; border-radius: 6px; font-size: 16px; font-weight: 700; cursor: pointer; display: block;">
+                                ⚡ Buy Self-Paced Phases 2 — ₹7,999 *
+                            </button>
+                        </div>
+                    </div>
+
+                </div>
+                <!-- Topmate Self-Paced Bundle Option (Phase 1 Box) -->
+                <button class="btn btn-success" onclick="window.open('https://topmate.io/automationtechguru/2294626', '_blank')" style="background-color: #22c55e !important; color: #ffffff !important; font-weight: 700; cursor: pointer;">
+                    ⚡ Get Instant Access — Self-Paced Bundle (Phases 1 & 2) — ₹8,999 *
+                </button>
+                <small style="color: #ffffff !important; opacity: 0.85; font-size: 11px; display: block; margin-top: 6px; line-height: 1.4; ">
+                    *For International Users, Topmate dynamically auto-adjusts checkout currency based on your location.
+                </small> 
+            </div>
+            </div>
+    </section>
+    <!-- Phase Cards -->
+    <h3 style="font-size: 1.8rem; margin: 3rem 0 2rem 0; font-weight: 700;"></h3>
     <!-- AI Features Section -->
     <section class="ai-features">
         <div class="section-container">
@@ -826,11 +920,24 @@
         <div class="section-container">
             <div class="cta-section">
                 <h2>Start Your 30-Day Transformation</h2>
+                <!-- Topmate Self-Paced Bundle Option (Phase 1 Box) -->
+                <button class="btn btn-success" onclick="window.open('https://topmate.io/automationtechguru/2294626', '_blank')" style="background-color: #22c55e !important; color: #ffffff !important; font-weight: 700; cursor: pointer;">
+                    ⚡ Get Instant Access — Self-Paced Bundle (Phases 1 & 2) — ₹8,999 *
+                </button>
+                <small style="color: #ffffff !important; opacity: 0.85; font-size: 11px; display: block; margin-top: 6px; line-height: 1.4; ">
+                    *For International Users, Topmate dynamically auto-adjusts checkout currency based on your location.
+                </small>
                 <p>
                     The Nov 14 Weekend Session fills fast. Limited to 25 participants for hands-on mentoring and live code reviews.
                     Join engineers building production-ready test automation with AI assistance.
                 </p>
-                <button class="btn" onclick="window.location.href='https://621b3f23.sibforms.com/v2/serve/MUIFAAYJRVYtdF43utRh_DRrjSy5hf8AuFLXmBCCwH1y-FXVqmRoUGsxZxumVKa7PUNP1S21w6Ln50K9Jtkd137hpTAjIVqfnx6xnBnIAt8UwtvXWxJQORbwtA2LydDE5I7WgrwjqiRf7McoA7V1zcOKZ0lswkiASy7esuywaNOsidpa236g1h2qmEl1LOa6pw2dNmdtqc3BCLC0ow=='">Register Now — Phase 1</button>
+                <div id="registration-section" class="brevo-responsive-wrapper" style="width: 100%; max-width: 680px; margin: 0 auto;">
+                    <iframe src="https://621b3f23.sibforms.com/v2/serve/MUIFAKrc41o8I3Zf0MQE8j3U1fUROMUHHvUzyIg3BoYDs1I0m-5bymnhd-wK3dyj_FOd_6N8KU5Fm-UcM08FlAgmX8GYx18cQPRNTRZ_kFEOEUdJFQedE7lZXYMrXsVGS6YtBIVzYyDy-TXemXZbPIZEa7wMk6KVVIFuqQ0jOo4PKLOUmXE1UqZ8CwW9ruOe0899hZSB4pNrEDa3jA=="
+                            frameborder="0"
+                            scrolling="no"
+                            style="display: block; width: 100%; height: 1350px; border: none;">
+                    </iframe>
+                </div>
                 <div>
                     <strong>
                         📌 Single Registration, Flexible Payment
@@ -838,6 +945,7 @@
                         Register once and stay enrolled throughout the program. Pay for each phase as you progress.
                     </strong>
                 </div>
+            </div>
             </div>
     </section>
 
