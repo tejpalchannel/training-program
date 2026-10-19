@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registration Complete - Playwright Automation Program</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        body {
+            background-color: #f4f7fa;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 20px;
+        }
+        .confirmation-card {
+            background: #ffffff;
+            max-width: 550px;
+            width: 100%;
+            padding: 40px 30px;
+            border-radius: 12px;
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.05);
+            text-align: center;
+            border-top: 5px solid #0073EC;
+        }
+        .icon-wrapper {
+            width: 70px;
+            height: 70px;
+            background: #e6f1fe;
+            color: #0073EC;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 32px;
+            margin: 0 auto 25px auto;
+        }
+        h1 {
+            color: #1e293b;
+            font-size: 26px;
+            font-weight: 700;
+            margin-bottom: 12px;
+        }
+        p {
+            color: #64748b;
+            font-size: 16px;
+            line-height: 1.6;
+            margin-bottom: 25px;
+        }
+        .cohort-badge {
+            display: inline-block;
+            background-color: #f1f5f9;
+            color: #475569;
+            padding: 6px 14px;
+            border-radius: 20px;
+            font-size: 14px;
+            font-weight: 600;
+            margin-bottom: 20px;
+        }
+        .btn-payment {
+            display: block;
+            background-color: #0073EC;
+            color: #ffffff;
+            text-decoration: none;
+            padding: 16px 30px;
+            border-radius: 6px;
+            font-size: 18px;
+            font-weight: 700;
+            transition: background-color 0.2s ease, transform 0.1s ease;
+            box-shadow: 0 4px 14px rgba(0, 115, 236, 0.3);
+        }
+        .btn-payment:hover {
+            background-color: #005bbd;
+            transform: translateY(-1px);
+        }
+        .btn-payment:active {
+            transform: translateY(1px);
+        }
+        .support-text {
+            margin-top: 25px;
+            font-size: 13px;
+            color: #94a3b8;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="confirmation-card">
+        <div class="icon-wrapper">✓</div>
+        
+        <span class="cohort-badge">Cohort Kickoff: 14 November 2026</span>
+        
+        <h1>Registration Complete!</h1>
+        
+        <p>
+            Your details have been successfully received and locked in.<br>
+            Please complete your Phase 1 enrollment payment below to secure your seat.
+        </p>
+        
+        <!-- REPLACE THE HREF VALUE WITH YOUR ACTUAL CHECKOUT LINK -->
+        <a href="YOUR_ACTUAL_PAYMENT_GATEWAY_LINK_HERE" class="btn-payment">
+            Proceed to Pay ₹3,999 / $69
+        </a>
+        
+        <p class="support-text">
+            Having trouble paying? Contact support at tejpalchannel@gmail.com
+        </p>
+    </div>
+
+</body>
+</html>
